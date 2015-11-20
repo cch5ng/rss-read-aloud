@@ -1,0 +1,83 @@
+<!--Documents/working/2015/programming/audio-reader/public/index.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></<script>
+
+  </script>
+</head>
+<body>
+  <h2>hello there, see the console for info</h2>
+
+  <script>
+    var numArrayItems = 5;
+
+    //$.ready(
+
+
+      var jhxr =  $.ajax({
+          method: 'GET',
+          // headers: {
+          //   origin: 'http://www.carolchung.com'
+          // },
+          //works
+          //url: 'https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty'//,
+          //url: 'https://hacker-news.firebaseio.com/v0/newstories.json?print=pretty'
+          //doesn't work SOP
+          url: 'http://www.npr.org/rss/rss.php?id=1001',
+          contentType: 'text/plain',
+          dataType: 'xml'
+          //url: 'http://feeds.bbci.co.uk/news/rss.xml?edition=us',
+        }).
+        done(function(data) {
+          console.log('data: ' + data);
+
+          var xmlDoc = data;
+          console.table(xmlDoc);
+          var items = xmlDoc.querySelectorAll('item');
+          console.log('items length: ' + items.length);
+          var itemsLength = items.length;
+
+//TODO: this works
+          console.log('1st item: ' + items[0].getElementsByTagName('title')[0].innerHTML);
+          console.log('1st item: ' + items[1].getElementsByTagName('title')[0].innerHTML);
+          console.log('1st item: ' + items[2].getElementsByTagName('title')[0].innerHTML);
+          //console.log('title1: ' + xmlDoc.getElementsByTagName('item')[0].childNodes[0].nodeValue);
+
+           for (var i = 0; i < itemsLength; i++) {
+              console.log('titles: ' + items[i].getElementsByTagName('title')[0].innerHTML);
+//TODO: this breaks
+              //console.log('title: ' + title);
+          //   console.log('title: ' + items[i].childNodes[0]);
+          //   console.log('title: ' + items[i].childNodes[0].nodeValue);
+           }
+
+
+//           $xml = $(data);
+//           //$title = $xml.find('title');
+//           //console.log('title: ' + $title.text());
+//           $items = $xml.find('item');
+//           console.log('items length: ' + $items.length);
+
+//           for (var i = 0; i < $items.length; i++) {
+//             console.log('item: ' + $items[i]);
+//             //console.log($items[i].length);
+//             console.log($items[i][0]);
+// //            console.log($items[i].text());
+//             // var $title = $items[i].title;
+//             // console.log($title);
+//             // console.log('title: ' + $title.text());
+//           }
+
+        }).
+        fail(function(err) {
+          console.log('error: ' + err.type);
+        }).
+        always(function() {
+          console.log('got here');
+        });
+    //);
+  </script>
+</body>
+</html>
