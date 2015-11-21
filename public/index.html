@@ -46,7 +46,18 @@
           //console.log('title1: ' + xmlDoc.getElementsByTagName('item')[0].childNodes[0].nodeValue);
 
            for (var i = 0; i < itemsLength; i++) {
-              console.log('titles: ' + items[i].getElementsByTagName('title')[0].innerHTML);
+              var titles,
+                  description,
+                  pubdate,
+                  link;
+              titles = items[i].getElementsByTagName('title')[0].innerHTML;
+              description = items[i].getElementsByTagName('description')[0].innerHTML;
+              pubDate = items[i].getElementsByTagName('pubDate')[0].innerHTML;;
+              link = items[i].getElementsByTagName('link')[0].innerHTML;
+              console.log('titles: ' + titles);
+              console.log('description: ' + description);
+              console.log('pubDate: ' + pubDate);
+              console.log('link: ' + link);
 //TODO: this breaks
               //console.log('title: ' + title);
           //   console.log('title: ' + items[i].childNodes[0]);
