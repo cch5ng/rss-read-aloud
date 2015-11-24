@@ -1,6 +1,6 @@
 module.exports = {
   entry: [
-    './src/js/NprFeed.jsx'
+    './src/js/*.jsx'
   ],
   module: {
     loaders: [{

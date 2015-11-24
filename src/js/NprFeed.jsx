@@ -15,7 +15,8 @@ var NprFeed = React.createClass({
         	contentType: 'text/plain',
         	dataType: 'xml',
         	success: function(data) {
-        		this.setState({data: data});
+        		var feeds = xmlDoc.querySelectorAll('item');
+        		this.setState({data: feeds});
 
 		//         console.log('data: ' + data);
 
