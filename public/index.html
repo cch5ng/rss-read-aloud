@@ -12,85 +12,58 @@
   <div id="npr"></div>
 
   <script>
-    var numArrayItems = 5;
+//     var numArrayItems = 5;
+//       var jhxr =  $.ajax({
+//           method: 'GET',
+//           // headers: {
+//           //   origin: 'http://www.carolchung.com'
+//           // },
+//           //works
+//           //url: 'https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty'//,
+//           //url: 'https://hacker-news.firebaseio.com/v0/newstories.json?print=pretty'
+//           //doesn't work SOP
+//           url: 'http://www.npr.org/rss/rss.php?id=1001',
+//           contentType: 'text/plain',
+//           dataType: 'xml'
+//           //url: 'http://feeds.bbci.co.uk/news/rss.xml?edition=us',
+//         }).
+//         done(function(data) {
+//           console.log('data: ' + data);
 
-    //$.ready(
+//           var xmlDoc = data;
+//           console.table(xmlDoc);
+//           var items = xmlDoc.querySelectorAll('item');
+//           console.log('items length: ' + items.length);
+//           var itemsLength = items.length;
 
+// //TODO: this works
+//           console.log('1st item: ' + items[0].getElementsByTagName('title')[0].innerHTML);
+//           console.log('1st item: ' + items[1].getElementsByTagName('title')[0].innerHTML);
+//           console.log('1st item: ' + items[2].getElementsByTagName('title')[0].innerHTML);
+//           //console.log('title1: ' + xmlDoc.getElementsByTagName('item')[0].childNodes[0].nodeValue);
 
-      var jhxr =  $.ajax({
-          method: 'GET',
-          // headers: {
-          //   origin: 'http://www.carolchung.com'
-          // },
-          //works
-          //url: 'https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty'//,
-          //url: 'https://hacker-news.firebaseio.com/v0/newstories.json?print=pretty'
-          //doesn't work SOP
-          url: 'http://www.npr.org/rss/rss.php?id=1001',
-          contentType: 'text/plain',
-          dataType: 'xml'
-          //url: 'http://feeds.bbci.co.uk/news/rss.xml?edition=us',
-        }).
-        done(function(data) {
-          console.log('data: ' + data);
-
-          var xmlDoc = data;
-          console.table(xmlDoc);
-          var items = xmlDoc.querySelectorAll('item');
-          console.log('items length: ' + items.length);
-          var itemsLength = items.length;
-
-//TODO: this works
-          console.log('1st item: ' + items[0].getElementsByTagName('title')[0].innerHTML);
-          console.log('1st item: ' + items[1].getElementsByTagName('title')[0].innerHTML);
-          console.log('1st item: ' + items[2].getElementsByTagName('title')[0].innerHTML);
-          //console.log('title1: ' + xmlDoc.getElementsByTagName('item')[0].childNodes[0].nodeValue);
-
-           for (var i = 0; i < itemsLength; i++) {
-              var titles,
-                  description,
-                  pubdate,
-                  link;
-              titles = items[i].getElementsByTagName('title')[0].innerHTML;
-              description = items[i].getElementsByTagName('description')[0].innerHTML;
-              pubDate = items[i].getElementsByTagName('pubDate')[0].innerHTML;;
-              link = items[i].getElementsByTagName('link')[0].innerHTML;
-              console.log('titles: ' + titles);
-              console.log('description: ' + description);
-              console.log('pubDate: ' + pubDate);
-              console.log('link: ' + link);
-//TODO: this breaks
-              //console.log('title: ' + title);
-          //   console.log('title: ' + items[i].childNodes[0]);
-          //   console.log('title: ' + items[i].childNodes[0].nodeValue);
-           }
-
-
-//           $xml = $(data);
-//           //$title = $xml.find('title');
-//           //console.log('title: ' + $title.text());
-//           $items = $xml.find('item');
-//           console.log('items length: ' + $items.length);
-
-//           for (var i = 0; i < $items.length; i++) {
-//             console.log('item: ' + $items[i]);
-//             //console.log($items[i].length);
-//             console.log($items[i][0]);
-// //            console.log($items[i].text());
-//             // var $title = $items[i].title;
-//             // console.log($title);
-//             // console.log('title: ' + $title.text());
-//           }
-
-        }).
-        fail(function(err) {
-          console.log('error: ' + err.type);
-        }).
-        always(function() {
-          console.log('got here');
-        });
-    //);
+//            for (var i = 0; i < itemsLength; i++) {
+//               var titles,
+//                   description,
+//                   pubdate,
+//                   link;
+//               titles = items[i].getElementsByTagName('title')[0].innerHTML;
+//               description = items[i].getElementsByTagName('description')[0].innerHTML;
+//               pubDate = items[i].getElementsByTagName('pubDate')[0].innerHTML;;
+//               link = items[i].getElementsByTagName('link')[0].innerHTML;
+//               console.log('titles: ' + titles);
+//               console.log('description: ' + description);
+//               console.log('pubDate: ' + pubDate);
+//               console.log('link: ' + link);
+//            }
+//         }).
+//         fail(function(err) {
+//           console.log('error: ' + err.type);
+//         }).
+//         always(function() {
+//           console.log('got here');
+//         });
   </script>
-<!--  <script src="public/bundle.js"></script> -->
+  <script src="js/bundle.js"></script>
 </body>
 </html>
