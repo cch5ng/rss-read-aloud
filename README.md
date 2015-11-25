@@ -12,6 +12,8 @@
 ### status
 
 * 11.24.15
+  * added workaround for the voice elements not handling long text; it may get messy with pause and resume type controls
+
   *typo in rocha's docs; event listeners should be like 'end', 'start', 'error'
     * currently documented as 'onend', 'onstart', 'onerror'
 
