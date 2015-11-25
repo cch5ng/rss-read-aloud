@@ -11,6 +11,15 @@
 
 ### status
 
+* 11.24.15
+  * added voice-elements polymer component as proof of concept; would like to later try this as web api (IBM)
+    * https://github.com/zenorocha/voice-elements
+
+  * issue rendering ajax results when try to use separate component, FeedList.jsx ... but when I move all components into NprFeed.jsx, the content renders as expected
+
+  * stuck, FeedList.jsx, line 30 => nothing renders
+  * perhaps syntax running array.map does not work for nodeList
+
 * 11.20.15
   * TODO: figure out what are the business requirements
     * what would it cost to pay for a server with 24/7 uptime; what is the average amount of time/requests that would be made
