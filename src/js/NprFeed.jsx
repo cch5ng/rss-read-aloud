@@ -2,7 +2,8 @@
 
 var React = require('react');
 var ReactDOM = require('react-dom');
-var FeedList = require('FeedList.jsx');
+//var FeedList = require('FeedList');
+//import FeedList from './FeedList.jsx';
 
 var NprFeed = React.createClass({
 	getInitialState: function() {
@@ -15,50 +16,75 @@ var NprFeed = React.createClass({
         	contentType: 'text/plain',
         	dataType: 'xml',
         	success: function(data) {
-        		var feeds = xmlDoc.querySelectorAll('item');
-        		this.setState({data: feeds});
+        		var numFeeds = 5;
+        		var feeds = data.querySelectorAll('item');
+        		console.log('feeds: ' + feeds);
+        		var feedsAr = [];
 
-		//         console.log('data: ' + data);
+        		for (var i = 0; i < numFeeds; i++) {
+        			var feedObj = {};
+        			feedObj.id = i;
+        			feedObj.title = feeds[i].getElementsByTagName('title')[0].innerHTML;
+        			feedObj.description = feeds[i].getElementsByTagName('description')[0].innerHTML;
+        			feedObj.pubDate = feeds[i].getElementsByTagName('pubDate')[0].innerHTML;
+        			feedObj.link = feeds[i].getElementsByTagName('link')[0].innerHTML;
+        			//console.log('title: ' + feedObj.title);
+        			//console.log('desc: ' + feedObj.description);
+        			feedsAr.push(feedObj);
+        		}
+        		this.setState({data: feedsAr});
 
-		//         var xmlDoc = data;
-		//         console.table(xmlDoc);
-		//         var items = xmlDoc.querySelectorAll('item');
-		//         console.log('items length: ' + items.length);
-		//         var itemsLength = items.length;
-
-		// //TODO: this works
-		//         console.log('1st item: ' + items[0].getElementsByTagName('title')[0].innerHTML);
-		//         console.log('1st item: ' + items[1].getElementsByTagName('title')[0].innerHTML);
-		//         console.log('1st item: ' + items[2].getElementsByTagName('title')[0].innerHTML);
-
-		//         for (var i = 0; i < itemsLength; i++) {
-		//             var titles,
-		//                 description,
-		//                 pubdate,
-		//                 link;
-		//             titles = items[i].getElementsByTagName('title')[0].innerHTML;
-		//             description = items[i].getElementsByTagName('description')[0].innerHTML;
-		//             pubDate = items[i].getElementsByTagName('pubDate')[0].innerHTML;;
-		//             link = items[i].getElementsByTagName('link')[0].innerHTML;
-		//             console.log('titles: ' + titles);
-		//             console.log('description: ' + description);
-		//             console.log('pubDate: ' + pubDate);
-		//             console.log('link: ' + link);
-		//         }
-
+        		//console.log('feedsAr: ' + feedsAr);
       		}.bind(this),
       		error: function(xhr, status, err) {
         		//console.error(this.props.url, status, err.toString());
       		}.bind(this)
         });
 	},
+	// componentDidMount: function() {
+	// 	this.loadFeedsFromServer();
+	// 	//setInterval(this.loadCommentsFromServer, this.props.pollInterval);
+	// },
 	render: function() {
-		return (<div class="nprFeed">
-					<FeedList />
+		return (<div className="nprFeed">
+					<button className="btnNpr">Play</button>
+					<FeedList data={this.state.data} />
 				</div>
 		);
 	}
 })
+
+var Feed = React.createClass({
+	render: function() {
+		return (
+			<div className="feed">
+				<h3><a href={this.props.link} target="_blank">{this.props.title}</a></h3>
+				<p>{this.props.description}</p>
+				<p>{this.props.pubDate}</p>
+			</div>
+			);
+	}
+});
+
+var FeedList = React.createClass({
+	render: function() {
+		console.log('props.data: ' + this.props.data);
+		var feedNodes = this.props.data.map(function(feed) {
+			//var title = feed.title;
+			//console.log('title: ' + title);
+			return (
+				<Feed key={feed.id} title={feed.title} description={feed.description} pubDate={feed.pubDate} link={feed.link} >
+				</Feed>
+			);
+		});
+
+		return (
+			<div className="feedList">
+				{feedNodes}
+			</div>
+		);
+	}
+});
 
 ReactDOM.render(
 	<NprFeed url='http://www.npr.org/rss/rss.php?id=1001' />,
