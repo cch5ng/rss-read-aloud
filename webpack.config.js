@@ -1,7 +1,7 @@
 module.exports = {
-  entry: [
-    './src/js/*.jsx'
-  ],
+  entry: {
+    nprBundle: ['./src/js/NprFeed.jsx'] //, './src/js/FeedList.jsx']
+  },
   module: {
     loaders: [{
       test: /\.jsx?$/,
@@ -18,7 +18,7 @@ module.exports = {
   output: {
     path: __dirname + '/public/js',
     publicPath: '/',
-    filename: 'bundle.js'
+    filename: '[name].js'
   },
   devServer: {
     contentBase: './dist'
