@@ -3,67 +3,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></<script>
-
-  </script>
+  <link rel="import" href="voice-elements/dist/voice-player.html">
 </head>
 <body>
   <h2>hello there, see the console for info</h2>
-  <div id="npr"></div>
-
+  <voice-player id="npr"></voice-player>
+<!--  <div id="npr"></div>-->
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="webcomponentsjs/webcomponents-lite.min.js"></script>
+  <script src="js/nprBundle.js"></script>
+  <script src="js/main.js"></script>
   <script>
-//     var numArrayItems = 5;
-//       var jhxr =  $.ajax({
-//           method: 'GET',
-//           // headers: {
-//           //   origin: 'http://www.carolchung.com'
-//           // },
-//           //works
-//           //url: 'https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty'//,
-//           //url: 'https://hacker-news.firebaseio.com/v0/newstories.json?print=pretty'
-//           //doesn't work SOP
-//           url: 'http://www.npr.org/rss/rss.php?id=1001',
-//           contentType: 'text/plain',
-//           dataType: 'xml'
-//           //url: 'http://feeds.bbci.co.uk/news/rss.xml?edition=us',
-//         }).
-//         done(function(data) {
-//           console.log('data: ' + data);
+    var element = document.querySelector('#npr');
+    element.setAttribute('text', element.innerText);
+    $('.btnBtn').click( function() {
+      element.setAttribute('text', element.innerText);
+      element.speak();
+    });
 
-//           var xmlDoc = data;
-//           console.table(xmlDoc);
-//           var items = xmlDoc.querySelectorAll('item');
-//           console.log('items length: ' + items.length);
-//           var itemsLength = items.length;
 
-// //TODO: this works
-//           console.log('1st item: ' + items[0].getElementsByTagName('title')[0].innerHTML);
-//           console.log('1st item: ' + items[1].getElementsByTagName('title')[0].innerHTML);
-//           console.log('1st item: ' + items[2].getElementsByTagName('title')[0].innerHTML);
-//           //console.log('title1: ' + xmlDoc.getElementsByTagName('item')[0].childNodes[0].nodeValue);
-
-//            for (var i = 0; i < itemsLength; i++) {
-//               var titles,
-//                   description,
-//                   pubdate,
-//                   link;
-//               titles = items[i].getElementsByTagName('title')[0].innerHTML;
-//               description = items[i].getElementsByTagName('description')[0].innerHTML;
-//               pubDate = items[i].getElementsByTagName('pubDate')[0].innerHTML;;
-//               link = items[i].getElementsByTagName('link')[0].innerHTML;
-//               console.log('titles: ' + titles);
-//               console.log('description: ' + description);
-//               console.log('pubDate: ' + pubDate);
-//               console.log('link: ' + link);
-//            }
-//         }).
-//         fail(function(err) {
-//           console.log('error: ' + err.type);
-//         }).
-//         always(function() {
-//           console.log('got here');
-//         });
   </script>
-  <script src="js/bundle.js"></script>
 </body>
 </html>
