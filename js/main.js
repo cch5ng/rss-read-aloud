@@ -1,21 +1,36 @@
 document.addEventListener('DOMContentLoaded', function() {
     var element = document.querySelector('voice-player');
+    var counter = 0;
+    var feed;
+	var feedNodes;
+    var feedNodesLength;
+
+    function playNextFeed() {
+		feed = feedNodes[counter].querySelector('h3').innerText;
+		console.log('text: ' + feed);
+		//text += feedNodes[i].querySelector('p').innerHTML;
+		//console.log('text: ' + text);
+		element.setAttribute('text', feed);
+		element.speak();
+    }
 
     $('.btnNpr').click( function() {
-	    var feedNodes = document.getElementsByClassName('feed');
-	    var feedNodesLength = feedNodes.length;
+    	feedNodes = document.getElementsByClassName('feed');
+    	feedNodesLength = feedNodes.length;
 	    console.log('feedNodes length: ' + feedNodes.length);
-	    //console.log('text: ' + element.innerText);
-		for (var i = 0; i < feedNodesLength; i++) {
-			//window.setTimeout(function() {
-				var toRead = feedNodes[i].querySelector('h3').innerText;
-				console.log('text: ' + toRead);
-				//text += feedNodes[i].querySelector('p').innerHTML;
-				//console.log('text: ' + text);
-				element.setAttribute('text', toRead);
-				element.speak();
-			//}, 3000);
-		}
+	    playNextFeed();
+    });
+
+    element.addEventListener('end', function() {
+    	console.log('gets here');
+    	if (counter < feedNodesLength - 1) {
+    		counter++; 
+    		console.log('counter: ' + counter);
+    		playNextFeed();
+    	} else {
+    		counter = 0;
+    		console.log('counter: ' + counter);
+    	}
     });
 })
 
