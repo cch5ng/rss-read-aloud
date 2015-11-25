@@ -12,6 +12,7 @@
 ### status
 
 * 11.24.15
+  * issue: for loop iteration too fast and so not all headlines are getting read, only first and last (4 times)
   * added voice-elements polymer component as proof of concept; would like to later try this as web api (IBM)
     * https://github.com/zenorocha/voice-elements
 
