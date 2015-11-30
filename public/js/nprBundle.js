@@ -44,130 +44,11 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(1);
+	module.exports = __webpack_require__(160);
 
 
 /***/ },
-/* 1 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	//src/js/npr-feed.jsx
-
-	var React = __webpack_require__(2);
-	var ReactDOM = __webpack_require__(159);
-	//var FeedList = require('FeedList');
-	//import FeedList from './FeedList.jsx';
-
-	var NprFeed = React.createClass({
-		displayName: 'NprFeed',
-
-		getInitialState: function getInitialState() {
-			return { data: [] };
-		},
-		componentDidMount: function componentDidMount() {
-			$.ajax({
-				method: 'GET',
-				url: this.props.url,
-				contentType: 'text/plain',
-				dataType: 'xml',
-				success: (function (data) {
-					var numFeeds = 5;
-					var feeds = data.querySelectorAll('item');
-					console.log('feeds: ' + feeds);
-					var feedsAr = [];
-
-					for (var i = 0; i < numFeeds; i++) {
-						var feedObj = {};
-						feedObj.id = i;
-						feedObj.title = feeds[i].getElementsByTagName('title')[0].innerHTML;
-						feedObj.description = feeds[i].getElementsByTagName('description')[0].innerHTML;
-						feedObj.pubDate = feeds[i].getElementsByTagName('pubDate')[0].innerHTML;
-						feedObj.link = feeds[i].getElementsByTagName('link')[0].innerHTML;
-						//console.log('title: ' + feedObj.title);
-						//console.log('desc: ' + feedObj.description);
-						feedsAr.push(feedObj);
-					}
-					this.setState({ data: feedsAr });
-
-					//console.log('feedsAr: ' + feedsAr);
-				}).bind(this),
-				error: (function (xhr, status, err) {
-					//console.error(this.props.url, status, err.toString());
-				}).bind(this)
-			});
-		},
-		// componentDidMount: function() {
-		// 	this.loadFeedsFromServer();
-		// 	//setInterval(this.loadCommentsFromServer, this.props.pollInterval);
-		// },
-		render: function render() {
-			return React.createElement(
-				'div',
-				{ className: 'nprFeed' },
-				React.createElement(
-					'button',
-					{ className: 'btnNpr' },
-					'Play'
-				),
-				React.createElement(FeedList, { data: this.state.data })
-			);
-		}
-	});
-
-	var Feed = React.createClass({
-		displayName: 'Feed',
-
-		render: function render() {
-			return React.createElement(
-				'div',
-				{ className: 'feed' },
-				React.createElement(
-					'h3',
-					null,
-					React.createElement(
-						'a',
-						{ href: this.props.link, target: '_blank' },
-						this.props.title
-					)
-				),
-				React.createElement(
-					'p',
-					null,
-					this.props.description
-				),
-				React.createElement(
-					'p',
-					null,
-					this.props.pubDate
-				)
-			);
-		}
-	});
-
-	var FeedList = React.createClass({
-		displayName: 'FeedList',
-
-		render: function render() {
-			console.log('props.data: ' + this.props.data);
-			var feedNodes = this.props.data.map(function (feed) {
-				//var title = feed.title;
-				//console.log('title: ' + title);
-				return React.createElement(Feed, { key: feed.id, title: feed.title, description: feed.description, pubDate: feed.pubDate, link: feed.link });
-			});
-
-			return React.createElement(
-				'div',
-				{ className: 'feedList' },
-				feedNodes
-			);
-		}
-	});
-
-	ReactDOM.render(React.createElement(NprFeed, { url: 'http://www.npr.org/rss/rss.php?id=1001' }), document.getElementById('npr'));
-
-/***/ },
+/* 1 */,
 /* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -19753,6 +19634,135 @@
 
 	module.exports = __webpack_require__(4);
 
+
+/***/ },
+/* 160 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	//src/js/NprFeed.jsx
+
+	var React = __webpack_require__(2);
+	var ReactDOM = __webpack_require__(159);
+	//var FeedList = require('FeedList');
+	//import FeedList from './FeedList.jsx';
+
+	var NprFeed = React.createClass({
+		displayName: 'NprFeed',
+
+		getInitialState: function getInitialState() {
+			return { data: [] };
+		},
+		componentDidMount: function componentDidMount() {
+			$.ajax({
+				method: 'GET',
+				url: this.props.url,
+				contentType: 'text/plain',
+				dataType: 'xml',
+				success: (function (data) {
+					var numFeeds = 15;
+					var feeds = data.querySelectorAll('item');
+					console.log('feeds: ' + feeds);
+					var feedsAr = [];
+					var prefix = 'npr';
+
+					for (var i = 0; i < numFeeds; i++) {
+						var feedObj = {};
+						//TODO the npr id value is not good because if websockets is used, the array idx is not going to be consistent
+						//across requests for the same story
+						//the link is going to be consistent so maybe just prepend it with 'npr'
+						feedObj.id = prefix + feeds[i].getElementsByTagName('link')[0].innerHTML;
+						feedObj.title = feeds[i].getElementsByTagName('title')[0].innerHTML;
+						feedObj.description = feeds[i].getElementsByTagName('description')[0].innerHTML;
+						feedObj.pubDate = feeds[i].getElementsByTagName('pubDate')[0].innerHTML;
+						feedObj.link = feeds[i].getElementsByTagName('link')[0].innerHTML;
+						//console.log('title: ' + feedObj.title);
+						//console.log('desc: ' + feedObj.description);
+						feedsAr.push(feedObj);
+					}
+					this.setState({ data: feedsAr });
+
+					//console.log('feedsAr: ' + feedsAr);
+				}).bind(this),
+				error: (function (xhr, status, err) {
+					//console.error(this.props.url, status, err.toString());
+				}).bind(this)
+			});
+		},
+		// componentDidMount: function() {
+		// 	this.loadFeedsFromServer();
+		// 	//setInterval(this.loadCommentsFromServer, this.props.pollInterval);
+		// },
+		render: function render() {
+			return React.createElement(
+				'div',
+				{ className: 'nprFeed' },
+				React.createElement(
+					'button',
+					{ className: 'btnNpr' },
+					'Play'
+				),
+				React.createElement(
+					'h3',
+					null,
+					'NPR News Feed'
+				),
+				React.createElement(FeedList, { data: this.state.data })
+			);
+		}
+	});
+
+	var Feed = React.createClass({
+		displayName: 'Feed',
+
+		render: function render() {
+			return React.createElement(
+				'div',
+				{ className: 'feed' },
+				React.createElement(
+					'h3',
+					null,
+					React.createElement(
+						'a',
+						{ href: this.props.link, target: '_blank' },
+						this.props.title
+					)
+				),
+				React.createElement(
+					'p',
+					null,
+					this.props.description
+				),
+				React.createElement(
+					'p',
+					null,
+					this.props.pubDate
+				)
+			);
+		}
+	});
+
+	var FeedList = React.createClass({
+		displayName: 'FeedList',
+
+		render: function render() {
+			console.log('props.data: ' + this.props.data);
+			var feedNodes = this.props.data.map(function (feed) {
+				//var title = feed.title;
+				//console.log('title: ' + title);
+				return React.createElement(Feed, { key: feed.id, title: feed.title, description: feed.description, pubDate: feed.pubDate, link: feed.link });
+			});
+
+			return React.createElement(
+				'div',
+				{ className: 'feedList' },
+				feedNodes
+			);
+		}
+	});
+
+	ReactDOM.render(React.createElement(NprFeed, { url: 'http://www.npr.org/rss/rss.php?id=1001' }), document.getElementById('npr'));
 
 /***/ }
 /******/ ]);

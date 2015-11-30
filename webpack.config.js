@@ -1,6 +1,9 @@
 module.exports = {
   entry: {
-    nprBundle: ['./src/js/NprFeed.jsx'] //, './src/js/FeedList.jsx']
+    nprBundle: ['./src/js/NprFeed.jsx'],
+    yahooBundle: ['./src/js/YahooFeed.jsx'],
+    bbcBundle: ['./src/js/BbcFeed.jsx']
+    //hackerNewsBundle: ['./src/js/HackerNewsFeed.jsx']
   },
   module: {
     loaders: [{

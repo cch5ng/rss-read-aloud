@@ -1,4 +1,4 @@
-//src/js/npr-feed.jsx
+//src/js/NprFeed.jsx
 
 var React = require('react');
 var ReactDOM = require('react-dom');
@@ -16,14 +16,18 @@ var NprFeed = React.createClass({
         	contentType: 'text/plain',
         	dataType: 'xml',
         	success: function(data) {
-        		var numFeeds = 5;
+        		var numFeeds = 15;
         		var feeds = data.querySelectorAll('item');
         		console.log('feeds: ' + feeds);
         		var feedsAr = [];
+        		var prefix = 'npr';
 
         		for (var i = 0; i < numFeeds; i++) {
         			var feedObj = {};
-        			feedObj.id = i;
+//TODO the npr id value is not good because if websockets is used, the array idx is not going to be consistent
+//across requests for the same story
+//the link is going to be consistent so maybe just prepend it with 'npr'
+        			feedObj.id = prefix + feeds[i].getElementsByTagName('link')[0].innerHTML;
         			feedObj.title = feeds[i].getElementsByTagName('title')[0].innerHTML;
         			feedObj.description = feeds[i].getElementsByTagName('description')[0].innerHTML;
         			feedObj.pubDate = feeds[i].getElementsByTagName('pubDate')[0].innerHTML;
@@ -48,6 +52,7 @@ var NprFeed = React.createClass({
 	render: function() {
 		return (<div className="nprFeed">
 					<button className="btnNpr">Play</button>
+					<h3>NPR News Feed</h3>
 					<FeedList data={this.state.data} />
 				</div>
 		);
