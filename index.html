@@ -8,20 +8,21 @@
 <body>
   <h2>hello there, see the console for info</h2>
   <voice-player id="npr"></voice-player>
-<!--  <div id="npr"></div>-->
+  <div id="yahoo"></div>
+  <div id="bbc"></div>
+<!--TODO test whether single page can handle multiple voice-player elements and whether this is a good practice -->
+<!--  <voice-player id="hacker-news"></voice-player>-->
+
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
   <script src="webcomponentsjs/webcomponents-lite.min.js"></script>
   <script src="js/nprBundle.js"></script>
+  <script src="js/yahooBundle.js"></script>
+  <script src="js/bbcBundle.js"></script>
+  <!-- comment out because of nested ajax timing issue
+  <script src="js/hackerNewsBundle.js"></script>
+  -->
   <script src="js/main.js"></script>
   <script>
-    var element = document.querySelector('#npr');
-    element.setAttribute('text', element.innerText);
-    $('.btnBtn').click( function() {
-      element.setAttribute('text', element.innerText);
-      element.speak();
-    });
-
-
   </script>
 </body>
 </html>
