@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     var element = document.querySelector('voice-player');
+//TODO how to handle this for multiple feeds
     var counter = 0;
     var feed;
 	var feedNodes;
@@ -14,8 +15,17 @@ document.addEventListener('DOMContentLoaded', function() {
 		element.speak();
     }
 
+//TODO abstract this to play appropriate feeds per button
+//TODO figure out if there is some way to create one global button that would play all feeds?
     $('.btnNpr').click( function() {
     	feedNodes = document.getElementsByClassName('feed');
+    	feedNodesLength = feedNodes.length;
+	    console.log('feedNodes length: ' + feedNodes.length);
+	    playNextFeed();
+    });
+
+    $('.btnYahoo').click( function() {
+    	feedNodes = document.getElementsByClassName('yahoo-feed');
     	feedNodesLength = feedNodes.length;
 	    console.log('feedNodes length: ' + feedNodes.length);
 	    playNextFeed();
