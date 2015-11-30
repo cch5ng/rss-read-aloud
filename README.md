@@ -11,7 +11,51 @@
 
 ### status
 
+* 11.30.15
+  * TODO
+    * http://feeds.bbci.co.uk/news/rss.xml?edition=us
+      * issue with xsl; try http://apigee.com/docs/api-services/reference/xsl-transform-policy
+      * http://feeds.bbci.co.uk/shared/bsp/xsl/rss/nolsol.xsl
+      * CORS, need to resolve as for yahoo (apigee api proxy)
+    * add one feed from mediafeed
+      * http://rss.nytimes.com/services/xml/rss/nyt/InternationalHome.xml
+  * Done: One play button with controls (sticky controls at the top; nav bar; and bottom?)
+  * Note: yesterday yahoo would not load even though the xhr seemed to return data; it was slow; perhaps due to issues with isp and dns lookups
+  * today yahoo loads without any issues
+  * can change the voice using the system settings
+    * for mac: change system voice from Dictation & Speech
+
+* 11.29.15
+  * yahoo doesn't load b/c xhr returns after initial page load
+
+* 11.28.15
+  * maybe change so that there is one button that plays audio for all feeds
+    * then need to update the class set for the feed component for yahoo
+
+  * yahoo rss
+    * CORS issue
+    * created apigee api proxy
+
+* 11.27.15
+  * hacker news: tried to separate the ajax nesting into two separate functions: getFeedIds() and loadFeedsFromServer() but not sure this helps
+    * temp comment out
+    * broke the logic
+
+  * issue hnews doesn't render. think issue with nested ajax and setting state
+    * remove hacker news for time being; focus on regular rss feeds
+      * timing issue with the nested ajax calls; not sure how to resolve this
+      * maybe add polling to update the page? this will be too complex with the audio feature
+    * nytimes
+    * look at list of top 10 news sites
+    * also wordpress rss
+    * issue probably with state (see line 9, 75 as workaround??)
+      * this did not work, gives an error, see screenshot
+    * tried this.state.data => this.state.hnData
+  * why webpack so slow
+
 * 11.24.15
+  * TO FIX: copied bower components to /public folder so it would get served, need to fix this later
+
   * added workaround for the voice elements not handling long text; it may get messy with pause and resume type controls
 
   *typo in rocha's docs; event listeners should be like 'end', 'start', 'error'
