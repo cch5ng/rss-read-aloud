@@ -11,14 +11,48 @@
 
 ### status
 
+* 12.02.15
+  * yahoo rendering inconsistent
+    * about 50/50 get error: Uncaught TypeError: Cannot read property 'getElementsByTagName' of undefined
+    * something about the last item in the items node list
+
+* 12.01.15
+  * Audio controls
+    * TODO: test
+    * updated main.js and index.html with new controls
+    * updated play function
+    * added pause and stop functions
+    * think that pause/resume is most likely to be buggy
+  * Aesthetics and mobile design
+    * TODO: finish nav bar customization (add the fade out and reappear)
+    * added image and tooltip
+  * README
+  * API side, figure out what kind of quotas to set
+    * http://apigee.com/docs/api-services/reference/quota-policy
+    * http://apigee.com/docs/api-services/reference/spike-arrest-policy
+    * http://apigee.com/docs/api-services/content/comparing-quota-spike-arrest-and-concurrent-rate-limit-policies
+    * figure out if I should have organized one api with multiple endpoints instead of multiple apis
+  * Blog about the challenges
+    * CORS
+    * some RSS feeds are not intended to be consumed easily (like the media feed distributed feeds contain ads)
+    * inconsistencies like some companies require xsl stylesheet
+    * generally the content is for personal consumption; it is not really available to make an application that can have a business/revenue model; yet it would cost a lot to host the service to make this type of application widely available to the public
+    * it is not easy to just drag and drop a new feed source and expect that there is a template and business logic that will automatically parse the feed generically as with other sources; you need to test and tweak the code a little on a per feed basis
+
+  * figure out hacker news, the timing because you need to make multiple ajax calls
+    * page renders before the ajax calls return; so none of the feed content loads
+    * maybe use an iife to get the initial story indexes first?
+
 * 11.30.15
   * TODO
-    * http://feeds.bbci.co.uk/news/rss.xml?edition=us
+    * http://rss.nytimes.com/services/xml/rss/nyt/InternationalHome.xml
       * issue with xsl; try http://apigee.com/docs/api-services/reference/xsl-transform-policy
-      * http://feeds.bbci.co.uk/shared/bsp/xsl/rss/nolsol.xsl
-      * CORS, need to resolve as for yahoo (apigee api proxy)
-    * add one feed from mediafeed
-      * http://rss.nytimes.com/services/xml/rss/nyt/InternationalHome.xml
+      * http://rss.nytimes.com/xsl/eng/rss.xsl
+    * improve UI, make mobile friendly
+    * figure out how to package polymer stuff
+      * probably should use bower
+    * check if I can just run everything from browser without using node; yeah pretty sure it can run solely from the client; just need to modify some of the controls like audio that are now using express routes
+  * Done: http://feeds.bbci.co.uk/shared/bsp/xsl/rss/nolsol.xsl
   * Done: One play button with controls (sticky controls at the top; nav bar; and bottom?)
   * Note: yesterday yahoo would not load even though the xhr seemed to return data; it was slow; perhaps due to issues with isp and dns lookups
   * today yahoo loads without any issues
