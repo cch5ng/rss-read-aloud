@@ -17,7 +17,7 @@ var YahooFeed = React.createClass({
 				var feeds = data.querySelectorAll('item');
 				var numFeeds;
 				if (feeds <= 15) {
-					numFeeds = feeds;
+					numFeeds = feeds.length - 1;
 				} else {
 					numFeeds = 15;
 				}
@@ -58,9 +58,10 @@ var YahooFeed = React.createClass({
 	// 	//setInterval(this.loadCommentsFromServer, this.props.pollInterval);
 	// },
 	render: function() {
-		return (<div className="yahoo-feeds">
-					<h3>Yahoo Top News Stories</h3>
-					{/*<button className="btnYahoo">Play</button>*/}
+		return (<div className="yahoo-feeds container">
+					<div className="row">
+						<h3 className='h3-yahoo'>Yahoo Top News Stories</h3>
+					</div>
 					<YFeedList data={this.state.data} />
 				</div>
 		);
@@ -70,7 +71,7 @@ var YahooFeed = React.createClass({
 var YFeed = React.createClass({
 	render: function() {
 		return (
-			<div className="feed">
+			<div className="col-xs-12 col-sm-6 col-md-4 feed-yahoo">
 				<h3><a href={this.props.link} target="_blank">{this.props.title}</a></h3>
 				{/*<p>{this.props.description}</p>*/}
 				<p>{this.props.pubDate}</p>
@@ -92,7 +93,7 @@ var YFeedList = React.createClass({
 		});
 
 		return (
-			<div className="yahoo-feed-list">
+			<div className="row yahoo-feed-list">
 				{feedNodes}
 			</div>
 		);

@@ -44,7 +44,7 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(161);
+	module.exports = __webpack_require__(162);
 
 
 /***/ },
@@ -19637,7 +19637,8 @@
 
 /***/ },
 /* 160 */,
-/* 161 */
+/* 161 */,
+/* 162 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -19663,7 +19664,7 @@
 					var feeds = data.querySelectorAll('item');
 					var numFeeds;
 					if (feeds <= 15) {
-						numFeeds = feeds;
+						numFeeds = feeds.length - 1;
 					} else {
 						numFeeds = 15;
 					}
@@ -19699,7 +19700,6 @@
 				}).bind(this)
 			});
 		},
-
 		// componentDidMount: function() {
 		// 	this.loadFeedsFromServer();
 		// 	//setInterval(this.loadCommentsFromServer, this.props.pollInterval);
@@ -19707,11 +19707,15 @@
 		render: function render() {
 			return React.createElement(
 				'div',
-				{ className: 'yahoo-feeds' },
+				{ className: 'yahoo-feeds container' },
 				React.createElement(
-					'h3',
-					null,
-					'Yahoo Top News Stories'
+					'div',
+					{ className: 'row' },
+					React.createElement(
+						'h3',
+						{ className: 'h3-yahoo' },
+						'Yahoo Top News Stories'
+					)
 				),
 				React.createElement(YFeedList, { data: this.state.data })
 			);
@@ -19724,7 +19728,7 @@
 		render: function render() {
 			return React.createElement(
 				'div',
-				{ className: 'feed' },
+				{ className: 'col-xs-12 col-sm-6 col-md-4 feed-yahoo' },
 				React.createElement(
 					'h3',
 					null,
@@ -19756,7 +19760,7 @@
 
 			return React.createElement(
 				'div',
-				{ className: 'yahoo-feed-list' },
+				{ className: 'row yahoo-feed-list' },
 				feedNodes
 			);
 		}

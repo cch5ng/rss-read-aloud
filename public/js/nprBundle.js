@@ -19697,16 +19697,20 @@
 		render: function render() {
 			return React.createElement(
 				'div',
-				{ className: 'nprFeed' },
+				{ className: 'nprFeed container' },
 				React.createElement(
 					'button',
 					{ className: 'btnNpr' },
 					'Play'
 				),
 				React.createElement(
-					'h3',
-					null,
-					'NPR News Feed'
+					'div',
+					{ className: 'row' },
+					React.createElement(
+						'h3',
+						{ className: 'h3-npr' },
+						'NPR News Feed'
+					)
 				),
 				React.createElement(FeedList, { data: this.state.data })
 			);
@@ -19719,7 +19723,7 @@
 		render: function render() {
 			return React.createElement(
 				'div',
-				{ className: 'feed' },
+				{ className: 'col-xs-12 col-sm-6 col-md-4 feed' },
 				React.createElement(
 					'h3',
 					null,
@@ -19733,11 +19737,6 @@
 					'p',
 					null,
 					this.props.description
-				),
-				React.createElement(
-					'p',
-					null,
-					this.props.pubDate
 				)
 			);
 		}
@@ -19756,7 +19755,7 @@
 
 			return React.createElement(
 				'div',
-				{ className: 'feedList' },
+				{ className: 'feedList row' },
 				feedNodes
 			);
 		}

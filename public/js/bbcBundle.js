@@ -73,17 +73,25 @@
 				contentType: 'text/plain',
 				dataType: 'xml',
 				success: (function (data) {
-					var numFeeds = 15;
 					var feeds = data.querySelectorAll('item');
+					var numFeeds;
+					if (feeds <= 15) {
+						numFeeds = feeds;
+					} else {
+						numFeeds = 15;
+					}
 					console.log('feeds: ' + feeds);
 					var feedsAr = [];
-					var prefix = 'npr';
+					var prefix = 'bbc';
 
 					for (var i = 0; i < numFeeds; i++) {
 						var feedObj = {};
 						//TODO the npr id value is not good because if websockets is used, the array idx is not going to be consistent
 						//across requests for the same story
 						//the link is going to be consistent so maybe just prepend it with 'npr'
+						console.log('feeds[i]: ' + feeds[i]);
+						console.log('feeds length: ' + feeds.length);
+						//console.log('feeds[i].link: ' + feeds[i].link.innerHTML);
 						feedObj.id = prefix + feeds[i].getElementsByTagName('link')[0].innerHTML;
 						feedObj.title = feeds[i].getElementsByTagName('title')[0].innerHTML;
 						feedObj.description = feeds[i].getElementsByTagName('description')[0].innerHTML;
@@ -93,7 +101,9 @@
 						//console.log('desc: ' + feedObj.description);
 						feedsAr.push(feedObj);
 					}
-					this.setState({ data: feedsAr });
+					if (this.isMounted()) {
+						this.setState({ data: feedsAr });
+					}
 
 					//console.log('feedsAr: ' + feedsAr);
 				}).bind(this),
@@ -102,18 +112,18 @@
 				}).bind(this)
 			});
 		},
-		// componentDidMount: function() {
-		// 	this.loadFeedsFromServer();
-		// 	//setInterval(this.loadCommentsFromServer, this.props.pollInterval);
-		// },
 		render: function render() {
 			return React.createElement(
 				'div',
-				{ className: 'bbc-feed' },
+				{ className: 'bbc-feed container' },
 				React.createElement(
-					'h3',
-					null,
-					'BBC News (US Edition)'
+					'div',
+					{ className: 'row' },
+					React.createElement(
+						'h3',
+						{ className: 'h3-bbc' },
+						'BBC News (US Edition)'
+					)
 				),
 				React.createElement(FeedList, { data: this.state.data })
 			);
@@ -126,7 +136,7 @@
 		render: function render() {
 			return React.createElement(
 				'div',
-				{ className: 'feed' },
+				{ className: 'col-xs-12 col-sm-6 col-md-4 feed-bbc' },
 				React.createElement(
 					'h3',
 					null,
@@ -140,11 +150,6 @@
 					'p',
 					null,
 					this.props.description
-				),
-				React.createElement(
-					'p',
-					null,
-					this.props.pubDate
 				)
 			);
 		}
@@ -163,13 +168,13 @@
 
 			return React.createElement(
 				'div',
-				{ className: 'feedList' },
+				{ className: 'row feedList' },
 				feedNodes
 			);
 		}
 	});
 
-	ReactDOM.render(React.createElement(BbcFeed, { url: 'http://feeds.bbci.co.uk/news/rss.xml?edition=us' }), document.getElementById('bbc'));
+	ReactDOM.render(React.createElement(BbcFeed, { url: 'https://carol5-test.apigee.net/v1/bbc-news' }), document.getElementById('bbc'));
 
 /***/ },
 /* 2 */
