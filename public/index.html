@@ -17,7 +17,7 @@
   <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 </head>
 <body>
-  <nav class="navbar navbar-default">
+  <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
@@ -32,10 +32,10 @@
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav audio-player"> <!-- navbar-right-->
           <li class="audio-control"><i class="fa fa-play fa-lg"></i></li>
           <li class="audio-control"><i class="fa fa-pause fa-lg"></i></li>
-          <li class="audio-control"><i class="fa fa-stop fa-lg"></i></li>
+          <!--<li class="audio-control"><i class="fa fa-stop fa-lg"></i></li>-->
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
@@ -57,6 +57,16 @@
   <div id="nytimes"></div>
   <div id="bbc"></div>
   <div id="yahoo"></div>
+
+  <footer class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12">
+        Copyright<br>
+        With <3 from TuskTusk Dev
+        About
+      </div>
+    </div>
+  </footer>
 <!--TODO test whether single page can handle multiple voice-player elements and whether this is a good practice -->
 <!--  <voice-player id="hacker-news"></voice-player>-->
 
@@ -71,8 +81,8 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
   <script src="js/nprBundle.js"></script>
   <script src="js/bbcBundle.js"></script>
-  <script src="js/yahooBundle.js"></script>
 <!-- TODO tshoot -->
+  <!--<script src="js/yahooBundle.js"></script>-->
   <!--<script src="js/nyTimesBundle.js"></script>-->
 </body>
 </html>
