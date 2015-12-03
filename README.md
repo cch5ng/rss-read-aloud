@@ -10,11 +10,36 @@
   * see console for request results
 
 ### status
+* 12.03.15
+  * issue: disabled the stop button
+  * issue: once the audio has looped through all feeds once, cannot get it to play again; think must refresh; not sure the cause
+    * reset the behavior to keep looping over the original feed; not sure if this is good or not
+  * look into pricing for apigee; can I use the test url with set limits?
+  * play and pause seem to work ok
+    * suspect that voice-element state is getting cached between sessions because the very first feed does not appear to get played
+    * worked around by putting in a default cancel() at the beginning
 
 * 12.02.15
+  * after the first feed element plays, the event listener for element event end never gets triggered
+    * if I click pause and then play again, then the entire list of feeds gets read
+    * do not understand why but this only occurs after implementing the play, pause, stop buttons
+  * test audio controls
+    * not clear difference between cancel and resume
+    * play seems ok
+    * if click pause and then click play, seems to resume. except if have waited a long time like > 30sec
+    * if click pause and then click stop, seems to also resume. this is not expected.
+  * make the header more stylish like the github design test version
+  * quotas and traffic spike limits
+  * option to filter feeds by topic??
+  * nice: add a footer
+  * nice: make the desktop image shorter
+  * what is wrong with yahoo, and nytimes feeds
+  * how to fix timing issue to get hackernews api results
   * yahoo rendering inconsistent
     * about 50/50 get error: Uncaught TypeError: Cannot read property 'getElementsByTagName' of undefined
     * something about the last item in the items node list
+    * if I can't fix it, adjust the logic so that if yahoo cannot display, the header would not appear
+    * https://facebook.github.io/react/tips/if-else-in-JSX.html
 
 * 12.01.15
   * Audio controls
