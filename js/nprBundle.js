@@ -19663,7 +19663,7 @@
 				success: (function (data) {
 					var numFeeds = 15;
 					var feeds = data.querySelectorAll('item');
-					console.log('feeds: ' + feeds);
+					//console.log('feeds: ' + feeds);
 					var feedsAr = [];
 					var prefix = 'npr';
 
@@ -19690,6 +19690,7 @@
 				}).bind(this)
 			});
 		},
+
 		// componentDidMount: function() {
 		// 	this.loadFeedsFromServer();
 		// 	//setInterval(this.loadCommentsFromServer, this.props.pollInterval);
@@ -19698,11 +19699,6 @@
 			return React.createElement(
 				'div',
 				{ className: 'nprFeed container' },
-				React.createElement(
-					'button',
-					{ className: 'btnNpr' },
-					'Play'
-				),
 				React.createElement(
 					'div',
 					{ className: 'row' },
@@ -19748,8 +19744,6 @@
 		render: function render() {
 			console.log('props.data: ' + this.props.data);
 			var feedNodes = this.props.data.map(function (feed) {
-				//var title = feed.title;
-				//console.log('title: ' + title);
 				return React.createElement(Feed, { key: feed.id, title: feed.title, description: feed.description, pubDate: feed.pubDate, link: feed.link });
 			});
 
