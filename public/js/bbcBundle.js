@@ -169,7 +169,7 @@
 		}
 	});
 
-	ReactDOM.render(React.createElement(BbcFeed, { url: 'https://carol5-test.apigee.net/v1/bbc-news' }), document.getElementById('bbc'));
+	ReactDOM.render(React.createElement(BbcFeed, { url: 'http://carol5-prod.apigee.net/v1/bbc-news' }), document.getElementById('bbc'));
 
 /***/ },
 /* 2 */
