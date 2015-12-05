@@ -16,9 +16,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function playNextFeed() {
 		feed = feedNodes[counter].querySelector('h3').innerText;
-        console.log('counter: ' + counter);
-		console.log('text: ' + feed);
-        console.log('audioState: ' + audioState);
+  //       console.log('counter: ' + counter);
+		// console.log('text: ' + feed);
+  //       console.log('audioState: ' + audioState);
 		//text += feedNodes[i].querySelector('p').innerHTML;
 		//console.log('text: ' + text);
 		element.setAttribute('text', feed);
@@ -33,21 +33,21 @@ document.addEventListener('DOMContentLoaded', function() {
         if (audioState === audioStates[1]) {
             feedNodes = document.getElementsByClassName('feed');
             feedNodesLength = feedNodes.length;
-            console.log('feedNodes length: ' + feedNodes.length);
+            //console.log('feedNodes length: ' + feedNodes.length);
             playNextFeed();
         } else if (audioState === audioStates[2]) {
         //if audio paused
             if (counter > 0) {
                 //NOTE resume only resumes feed[0]; but audio does not play through the list
                 element.resume();
-                console.log('counter: ' + counter);
-                console.log('audioState: ' + audioState);
+                // console.log('counter: ' + counter);
+                // console.log('audioState: ' + audioState);
             //NOTE cancel increments counter but makes the audio play through the list
             //element.cancel();
             } else if (counter === 0) {
                 playNextFeed();
-                console.log('counter: ' + counter);
-                console.log('audioState: ' + audioState);
+                // console.log('counter: ' + counter);
+                // console.log('audioState: ' + audioState);
             }
 
             audioState = audioStates[0];
@@ -70,15 +70,15 @@ document.addEventListener('DOMContentLoaded', function() {
         element.setAttribute('text', '');
         counter = 0;
         audioState = audioStates[1];
-        console.log('counter: ' + counter);
-        console.log('audioState: ' + audioState);
+        //console.log('counter: ' + counter);
+        //console.log('audioState: ' + audioState);
     });
 
 //TODO this event does not currently get triggered
     element.addEventListener('end', function(e) {
         e.preventDefault();
-        console.log('feedNodesLength - 1: ' + (feedNodesLength - 1).toString());
-    	console.log('gets to end of feed num: ' + counter);
+        //console.log('feedNodesLength - 1: ' + (feedNodesLength - 1).toString());
+    	//console.log('gets to end of feed num: ' + counter);
     	if (counter < feedNodesLength - 1) {
     		counter++; 
     		//console.log('counter: ' + counter);
