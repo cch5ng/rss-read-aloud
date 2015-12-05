@@ -94,6 +94,6 @@ var FeedList = React.createClass({
 });
 
 ReactDOM.render(
-	<BbcFeed url='https://carol5-test.apigee.net/v1/bbc-news' />,
+	<BbcFeed url='http://carol5-prod.apigee.net/v1/bbc-news' />,
 	document.getElementById('bbc')
 );
