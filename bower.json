@@ -1,0 +1,25 @@
+{
+  "name": "audio-reader",
+  "version": "0.0.1",
+  "authors": [
+    "cch5ng <cch5ng@gmail.com>"
+  ],
+  "description": "RSS Read Aloud app",
+  "main": "public/index.html",
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "voice-elements": "~1.0.0"
+  }
+}
