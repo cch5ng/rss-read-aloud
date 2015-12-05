@@ -19677,8 +19677,8 @@
 						//TODO the npr id value is not good because if websockets is used, the array idx is not going to be consistent
 						//across requests for the same story
 						//the link is going to be consistent so maybe just prepend it with 'npr'
-						console.log('feeds[i]: ' + feeds[i]);
-						console.log('feeds length: ' + feeds.length);
+						// console.log('feeds[i]: ' + feeds[i]);
+						// console.log('feeds length: ' + feeds.length);
 						//console.log('feeds[i].link: ' + feeds[i].link.innerHTML);
 						feedObj.id = prefix + feeds[i].getElementsByTagName('link')[0].innerHTML;
 						feedObj.title = feeds[i].getElementsByTagName('title')[0].innerHTML;
@@ -19700,10 +19700,6 @@
 				}).bind(this)
 			});
 		},
-		// componentDidMount: function() {
-		// 	this.loadFeedsFromServer();
-		// 	//setInterval(this.loadCommentsFromServer, this.props.pollInterval);
-		// },
 		render: function render() {
 			return React.createElement(
 				'div',
@@ -19711,10 +19707,11 @@
 				React.createElement(
 					'div',
 					{ className: 'row' },
+					'//TODO test: try to hide yahoo heading if there is an error retrieving data',
 					React.createElement(
 						'h3',
 						{ className: 'h3-yahoo' },
-						'Yahoo Top News Stories'
+						this.state.data[0].link ? 'Yahoo Top News Stories' : ''
 					)
 				),
 				React.createElement(YFeedList, { data: this.state.data })
@@ -19753,8 +19750,6 @@
 		render: function render() {
 			console.log('props.data: ' + this.props.data);
 			var feedNodes = this.props.data.map(function (feed) {
-				//var title = feed.title;
-				//console.log('title: ' + title);
 				return React.createElement(YFeed, { key: feed.id, title: feed.title, description: feed.description, pubDate: feed.pubDate, link: feed.link });
 			});
 
