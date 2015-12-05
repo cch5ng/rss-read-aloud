@@ -23,17 +23,14 @@ var BbcFeed = React.createClass({
 				} else {
 					numFeeds = 15;
 				}
-				console.log('feeds: ' + feeds);
+				//console.log('feeds: ' + feeds);
 				var feedsAr = [];
 				var prefix = 'bbc';
 
 				for (var i = 0; i < numFeeds; i++) {
 					var feedObj = {};
-//TODO the npr id value is not good because if websockets is used, the array idx is not going to be consistent
-//across requests for the same story
-//the link is going to be consistent so maybe just prepend it with 'npr'
-					console.log('feeds[i]: ' + feeds[i]);
-					console.log('feeds length: ' + feeds.length);
+					// console.log('feeds[i]: ' + feeds[i]);
+					// console.log('feeds length: ' + feeds.length);
 					//console.log('feeds[i].link: ' + feeds[i].link.innerHTML);
 					feedObj.id = prefix + feeds[i].getElementsByTagName('link')[0].innerHTML;
 					feedObj.title = feeds[i].getElementsByTagName('title')[0].innerHTML;
@@ -69,7 +66,7 @@ var BbcFeed = React.createClass({
 var Feed = React.createClass({
 	render: function() {
 		return (
-			<div className="col-xs-12 col-sm-6 col-md-4 feed-bbc">
+			<div className="col-xs-12 col-sm-6 col-md-4 feed feed-bbc">
 				<h3><a href={this.props.link} target="_blank">{this.props.title}</a></h3>
 				<p>{this.props.description}</p>
 				{/*<p>{this.props.pubDate}</p>*/}
@@ -80,10 +77,8 @@ var Feed = React.createClass({
 
 var FeedList = React.createClass({
 	render: function() {
-		console.log('props.data: ' + this.props.data);
+		//console.log('props.data: ' + this.props.data);
 		var feedNodes = this.props.data.map(function(feed) {
-			//var title = feed.title;
-			//console.log('title: ' + title);
 			return (
 				<Feed key={feed.id} title={feed.title} description={feed.description} pubDate={feed.pubDate} link={feed.link} >
 				</Feed>

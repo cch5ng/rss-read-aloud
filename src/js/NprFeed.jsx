@@ -18,7 +18,7 @@ var NprFeed = React.createClass({
         	success: function(data) {
         		var numFeeds = 15;
         		var feeds = data.querySelectorAll('item');
-        		console.log('feeds: ' + feeds);
+        		//console.log('feeds: ' + feeds);
         		var feedsAr = [];
         		var prefix = 'npr';
 
@@ -51,7 +51,7 @@ var NprFeed = React.createClass({
 	// },
 	render: function() {
 		return (<div className="nprFeed container">
-					<button className="btnNpr">Play</button>
+					{/*<button className="btnNpr">Play</button>*/}
 					<div className="row">
 						<h3 className='h3-npr'>NPR News Feed</h3>
 					</div>
@@ -77,8 +77,6 @@ var FeedList = React.createClass({
 	render: function() {
 		console.log('props.data: ' + this.props.data);
 		var feedNodes = this.props.data.map(function(feed) {
-			//var title = feed.title;
-			//console.log('title: ' + title);
 			return (
 				<Feed key={feed.id} title={feed.title} description={feed.description} pubDate={feed.pubDate} link={feed.link} >
 				</Feed>
