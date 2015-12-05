@@ -30,8 +30,8 @@ var YahooFeed = React.createClass({
 //TODO the npr id value is not good because if websockets is used, the array idx is not going to be consistent
 //across requests for the same story
 //the link is going to be consistent so maybe just prepend it with 'npr'
-					console.log('feeds[i]: ' + feeds[i]);
-					console.log('feeds length: ' + feeds.length);
+					// console.log('feeds[i]: ' + feeds[i]);
+					// console.log('feeds length: ' + feeds.length);
 					//console.log('feeds[i].link: ' + feeds[i].link.innerHTML);
 					feedObj.id = prefix + feeds[i].getElementsByTagName('link')[0].innerHTML;
 					feedObj.title = feeds[i].getElementsByTagName('title')[0].innerHTML;
@@ -53,14 +53,11 @@ var YahooFeed = React.createClass({
 			}.bind(this)
 		});
 	},
-	// componentDidMount: function() {
-	// 	this.loadFeedsFromServer();
-	// 	//setInterval(this.loadCommentsFromServer, this.props.pollInterval);
-	// },
 	render: function() {
 		return (<div className="yahoo-feeds container">
 					<div className="row">
-						<h3 className='h3-yahoo'>Yahoo Top News Stories</h3>
+//TODO test: try to hide yahoo heading if there is an error retrieving data
+						<h3 className='h3-yahoo'>{this.state.data[0].link ? 'Yahoo Top News Stories' : ''}</h3>
 					</div>
 					<YFeedList data={this.state.data} />
 				</div>
@@ -84,8 +81,6 @@ var YFeedList = React.createClass({
 	render: function() {
 		console.log('props.data: ' + this.props.data);
 		var feedNodes = this.props.data.map(function(feed) {
-			//var title = feed.title;
-			//console.log('title: ' + title);
 			return (
 				<YFeed key={feed.id} title={feed.title} description={feed.description} pubDate={feed.pubDate} link={feed.link} >
 				</YFeed>
