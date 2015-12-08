@@ -19693,7 +19693,7 @@
 					//console.log('feedsAr: ' + feedsAr);
 				}).bind(this),
 				error: (function (xhr, status, err) {
-					//console.error(this.props.url, status, err.toString());
+					console.error(this.props.url, status, err.toString());
 				}).bind(this)
 			});
 		},
@@ -19712,7 +19712,7 @@
 					React.createElement(
 						'h3',
 						{ className: 'h3-npr' },
-						'NPR News Feed'
+						this.state.data[0].link ? 'NPR News Feed' : ''
 					)
 				),
 				React.createElement(FeedList, { data: this.state.data })

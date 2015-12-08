@@ -46,7 +46,7 @@ var NprFeed = React.createClass({
         		//console.log('feedsAr: ' + feedsAr);
       		}.bind(this),
       		error: function(xhr, status, err) {
-        		//console.error(this.props.url, status, err.toString());
+        		console.error(this.props.url, status, err.toString());
       		}.bind(this)
         });
 	},
@@ -58,7 +58,7 @@ var NprFeed = React.createClass({
 		return (<div className="nprFeed container">
 					{/*<button className="btnNpr">Play</button>*/}
 					<div className="row">
-						<h3 className='h3-npr'>NPR News Feed{/*this.state.data[0].link ? 'NPR News Feed' : ''*/}</h3>
+						<h3 className='h3-npr'>{this.state.data[0].link ? 'NPR News Feed' : ''}</h3>
 					</div>
 					<FeedList data={this.state.data} />
 				</div>
