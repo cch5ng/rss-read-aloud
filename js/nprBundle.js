@@ -19641,6 +19641,8 @@
 
 	'use strict';
 
+	function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj; }
+
 	//src/js/NprFeed.jsx
 
 	var React = __webpack_require__(2);
@@ -19681,7 +19683,12 @@
 						//console.log('desc: ' + feedObj.description);
 						feedsAr.push(feedObj);
 					}
-					this.setState({ data: feedsAr });
+					if (this.isMounted()) {
+						this.setState({ data: feedsAr });
+					}
+					console.log(this.state.data[0].length);
+					console.log(_typeof(this.state.data[0]));
+					console.log(_typeof(this.state.data[0]));
 
 					//console.log('feedsAr: ' + feedsAr);
 				}).bind(this),
@@ -19755,7 +19762,7 @@
 		}
 	});
 
-	ReactDOM.render(React.createElement(NprFeed, { url: 'http://www.npr.org/rss/rss.php?id=1001' }), document.getElementById('npr'));
+	ReactDOM.render(React.createElement(NprFeed, { url: 'http://carol5-prod.apigee.net/v1/npr_news' }), document.getElementById('npr'));
 
 /***/ }
 /******/ ]);
