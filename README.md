@@ -4,6 +4,11 @@
   * This is a running React project. I wanted to be able to read the news in a hands-free manner while eating lunch.
   * There are still some news feeds that I would like to add but need to troubleshoot.
 
+## To run the demo
+  * Open http://www.carolchung.com/rss-read-aloud/
+  * To play audio for headlines, click the play button.
+  * To stop audio, click the pause button.
+
 ## To run locally
   * From the console, at the project root, run
   `grunt`
