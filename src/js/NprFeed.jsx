@@ -36,7 +36,12 @@ var NprFeed = React.createClass({
         			//console.log('desc: ' + feedObj.description);
         			feedsAr.push(feedObj);
         		}
-        		this.setState({data: feedsAr});
+        		if (this.isMounted()) {
+					this.setState({data: feedsAr});
+				}
+				console.log(this.state.data[0].length);
+				console.log(typeof this.state.data[0]);
+				console.log(typeof this.state.data[0]);
 
         		//console.log('feedsAr: ' + feedsAr);
       		}.bind(this),
@@ -53,7 +58,7 @@ var NprFeed = React.createClass({
 		return (<div className="nprFeed container">
 					{/*<button className="btnNpr">Play</button>*/}
 					<div className="row">
-						<h3 className='h3-npr'>NPR News Feed</h3>
+						<h3 className='h3-npr'>NPR News Feed{/*this.state.data[0].link ? 'NPR News Feed' : ''*/}</h3>
 					</div>
 					<FeedList data={this.state.data} />
 				</div>
@@ -92,6 +97,6 @@ var FeedList = React.createClass({
 });
 
 ReactDOM.render(
-	<NprFeed url='http://carol5-test.apigee.net/v1/npr_news' />,
+	<NprFeed url='http://carol5-prod.apigee.net/v1/npr_news' />,
 	document.getElementById('npr')
 );
