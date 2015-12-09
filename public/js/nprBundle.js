@@ -19712,7 +19712,7 @@
 					React.createElement(
 						'h3',
 						{ className: 'h3-npr' },
-						this.state.data[0].link ? 'NPR News Feed' : ''
+						'NPR News Feed '
 					)
 				),
 				React.createElement(FeedList, { data: this.state.data })
