@@ -16,8 +16,8 @@ var NprFeed = React.createClass({
         	contentType: 'text/plain',
         	dataType: 'xml',
         	success: function(data) {
-        		var numFeeds = 15;
         		var feeds = data.querySelectorAll('item');
+        		var numFeeds = feeds.length; //15;
         		//console.log('feeds: ' + feeds);
         		var feedsAr = [];
         		var prefix = 'npr';
@@ -58,7 +58,7 @@ var NprFeed = React.createClass({
 		return (<div className="nprFeed container">
 					{/*<button className="btnNpr">Play</button>*/}
 					<div className="row">
-						<h3 className='h3-npr'>{this.state.data[0].link ? 'NPR News Feed' : ''}</h3>
+						<h3 className='h3-npr'>NPR News Feed {/*this.state.data[0].link ? 'NPR News Feed' : ''*/}</h3>
 					</div>
 					<FeedList data={this.state.data} />
 				</div>

@@ -19663,8 +19663,8 @@
 				contentType: 'text/plain',
 				dataType: 'xml',
 				success: (function (data) {
-					var numFeeds = 15;
 					var feeds = data.querySelectorAll('item');
+					var numFeeds = feeds.length; //15;
 					//console.log('feeds: ' + feeds);
 					var feedsAr = [];
 					var prefix = 'npr';
@@ -19712,7 +19712,7 @@
 					React.createElement(
 						'h3',
 						{ className: 'h3-npr' },
-						this.state.data[0].link ? 'NPR News Feed' : ''
+						'NPR News Feed '
 					)
 				),
 				React.createElement(FeedList, { data: this.state.data })
