@@ -19762,7 +19762,7 @@
 		}
 	});
 
-	ReactDOM.render(React.createElement(NprFeed, { url: 'http://carol5-prod.apigee.net/v1/npr_news' }), document.getElementById('npr'));
+	ReactDOM.render(React.createElement(NprFeed, { url: 'http://carol5-test.apigee.net/v1/npr_news' }), document.getElementById('npr'));
 
 /***/ }
 /******/ ]);
