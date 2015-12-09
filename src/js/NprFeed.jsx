@@ -97,6 +97,6 @@ var FeedList = React.createClass({
 });
 
 ReactDOM.render(
-	<NprFeed url='http://carol5-prod.apigee.net/v1/npr_news' />,
+	<NprFeed url='http://carol5-test.apigee.net/v1/npr_news' />,
 	document.getElementById('npr')
 );
